@@ -4,12 +4,12 @@ Toto je hotová stránka. Už je to HTML, CSS a JavaScript. Netreba ju prepisova
 
 Otvorí sa na oznámení eventu New Era. Program ide iTag, iBuds a na koniec iFruit 18 Pro.
 
-Súbor `index.html` je úvod. Štýl je v `assets/`. Obrázky sú vedľa neho. Ukážka telefónu je ľahký rám z reálnych fotiek. Celý klient z hry, mapy a Duo v tomto priečinku nie sú, lebo GitHub Pages pri tisícoch súborov stránku zhodí.
+Súbor `index.html` je úvod. Štýl je v `assets/`. Obrázky, telefón a ostatné súbory sú vedľa neho.
 
 ## Ako z toho spraviť GitHub Page
 
 1. Na GitHube vytvor nové verejné repo. Meno napríklad `iFruit`. README nepridávaj.
-2. Tento priečinok nahraj cez Git.
+2. Tento priečinok nahraj cez Git. Tlačidlo Upload files na webe nestačí, lebo živý telefón má mapy a priečinok má asi 215 MB.
 3. V PowerShelli, keď máš nainštalovaný Git a repo je prázdne:
 
 ```
