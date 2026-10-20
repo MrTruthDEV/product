@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framebook</title>
+    <link rel="stylesheet" href="./themes.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+    <script src="jquery.min.js"></script>
+</head>
+
+<body>
+    <section id="phone-device">
+        <div id="application">
+
+            <!-- ══════════════════════════════════════════════════════
+     LOGIN VIEW
+══════════════════════════════════════════════════════ -->
+            <div id="view-login" class="view">
+                <div class="login-container">
+                    <div class="login-logo-wrap">
+                        <span class="fb-wordmark">facebook</span>
+                    </div>
+                    <p class="login-tagline">Connect with friends and the world around you.</p>
+                    <div class="login-form">
+                        <input type="text" id="login-name" class="fb-input" placeholder="Full Name" maxlength="50" autocomplete="off">
+                        <input type="text" id="login-username" class="fb-input" placeholder="Username (no spaces)" maxlength="30" autocomplete="off">
+                        <textarea id="login-bio" class="fb-input fb-textarea" placeholder="Bio (optional)" maxlength="150" rows="2"></textarea>
+                        <button id="btn-create-account" class="fb-btn fb-btn-primary fb-btn-full">Create Account</button>
+                        <button id="btn-recover-account" class="fb-btn fb-btn-ghost fb-btn-full">Forgot your account?</button>
+                    </div>
+                    <p class="login-terms">By creating an account you agree to our <span class="link-text">Terms</span> and <span class="link-text">Privacy Policy</span>.</p>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MAIN APP VIEW
+══════════════════════════════════════════════════════ -->
+            <div id="view-app" class="view hidden">
+
+                <!-- ── Home Header ─────────────────────────────── -->
+                <header id="hdr-home" class="fb-header">
+                    <div class="fb-header-left">
+                        <span class="fb-wordmark">facebook</span>
+                    </div>
+                    <div class="fb-header-right">
+                        <button class="fb-icon-btn" id="btn-hdr-search"><i class="fas fa-search"></i></button>
+                        <button class="fb-icon-btn" id="btn-hdr-messenger"><i class="fab fa-facebook-messenger"></i></button>
+                    </div>
+                </header>
+
+                <!-- ── Feeds Header ────────────────────────────── -->
+                <header id="hdr-feeds" class="fb-header hidden">
+                    <div class="fb-header-left"><span class="fb-header-title">Feeds</span></div>
+                    <div class="fb-header-right">
+                        <button class="fb-icon-btn" id="btn-feeds-search"><i class="fas fa-search"></i></button>
+                    </div>
+                </header>
+
+                <!-- ── Friends Header ──────────────────────────── -->
+                <header id="hdr-friends" class="fb-header hidden">
+                    <div class="fb-header-left"><span class="fb-header-title">Friends</span></div>
+                    <div class="fb-header-right">
+                        <button class="fb-icon-btn" id="btn-friends-search"><i class="fas fa-search"></i></button>
+                    </div>
+                </header>
+
+                <!-- ── Notifications Header ────────────────────── -->
+                <header id="hdr-notifs" class="fb-header hidden">
+                    <div class="fb-header-left"><span class="fb-header-title">Notifications</span></div>
+                </header>
+
+                <!-- ── Profile Header ─────────────────────────── -->
+                <header id="hdr-profile" class="fb-header hidden">
+                    <div class="fb-header-left">
+                        <button class="fb-icon-btn" id="btn-back-profile"><i class="fas fa-arrow-left"></i></button>
+                        <span class="fb-header-title" id="profile-header-name">Profile</span>
+                    </div>
+                    <div class="fb-header-right"></div>
+                </header>
+
+                <!-- ── Messages Header ────────────────────────── -->
+                <header id="hdr-messages" class="fb-header hidden">
+                    <div class="fb-header-left"><span class="fb-header-title">Messages</span></div>
+                    <div class="fb-header-right">
+                        <button class="fb-icon-btn" id="btn-new-message"><i class="fas fa-edit"></i></button>
+                    </div>
+                </header>
+
+                <!-- ── Conversation Header ─────────────────────── -->
+                <header id="hdr-convo" class="fb-header hidden">
+                    <div class="fb-header-left">
+                        <button class="fb-icon-btn" id="btn-back-convo"><i class="fas fa-arrow-left"></i></button>
+                        <div class="convo-hdr-info">
+                            <div class="convo-hdr-avatar" id="convo-hdr-avatar"></div>
+                            <div class="convo-hdr-text">
+                                <span class="convo-hdr-name" id="convo-hdr-name"></span>
+                                <span class="convo-hdr-status">Active now</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fb-header-right"></div>
+                </header>
+
+                <!-- ═══════════════════════════════════════════════
+         CONTENT AREA
+    ═══════════════════════════════════════════════ -->
+                <main id="content-area">
+
+                    <!-- ─── HOME TAB ──────────────────────────── -->
+                    <div id="tab-home" class="tab-pane">
+
+                        <!-- Stories row -->
+                        <div class="stories-wrapper">
+                            <div class="stories-row" id="stories-row">
+                                <!-- Create Story card -->
+                                <div class="story-card create-story-card" id="btn-create-story">
+                                    <div class="story-card-bg" id="create-story-bg"></div>
+                                    <div class="create-story-plus"><i class="fas fa-plus"></i></div>
+                                    <span class="story-card-label">Create a Story</span>
+                                </div>
+                                <!-- Friend stories injected here -->
+                            </div>
+                        </div>
+
+                        <!-- Create Post bar -->
+                        <div class="create-post-bar">
+                            <div class="create-post-avatar" id="home-user-avatar"></div>
+                            <button class="create-post-placeholder" id="btn-open-create-post">What's on your mind?</button>
+                            <button class="create-post-photo-btn" id="btn-quick-photo">
+                                <i class="fas fa-image" style="color:#45bd62"></i>
+                            </button>
+                        </div>
+
+                        <div class="fb-hr"></div>
+
+                        <!-- Post action shortcuts -->
+                        <div class="post-shortcuts">
+                            <button class="post-shortcut-btn" id="btn-shortcut-reel">
+                                <i class="fas fa-film" style="color:#f02849"></i> Reel
+                            </button>
+                            <div class="post-shortcut-sep"></div>
+                            <button class="post-shortcut-btn" id="btn-shortcut-photo">
+                                <i class="fas fa-image" style="color:#45bd62"></i> Photo
+                            </button>
+                            <div class="post-shortcut-sep"></div>
+                            <button class="post-shortcut-btn" id="btn-shortcut-feeling">
+                                <i class="fas fa-smile" style="color:#f7b928"></i> Feeling
+                            </button>
+                        </div>
+
+                        <div class="fb-hr"></div>
+
+                        <!-- Posts feed -->
+                        <div id="posts-feed"></div>
+                        <div class="feed-end hidden" id="feed-end">You're all caught up <i class="fas fa-check-circle"></i></div>
+                    </div>
+
+                    <!-- ─── FEEDS TAB ─────────────────────────── -->
+                    <div id="tab-feeds" class="tab-pane hidden">
+                        <div class="feeds-subtabs" id="feeds-subtabs">
+                            <button class="feeds-subtab active" data-filter="all">All</button>
+                            <button class="feeds-subtab" data-filter="favorites">Favorites</button>
+                            <button class="feeds-subtab" data-filter="friends">Friends</button>
+                        </div>
+                        <div id="feeds-feed"></div>
+                    </div>
+
+                    <!-- ─── NOTIFICATIONS TAB ─────────────────── -->
+                    <div id="tab-notifs" class="tab-pane hidden">
+                        <div id="notifs-list"></div>
+                        <div class="empty-state hidden" id="notifs-empty">
+                            <i class="fas fa-bell"></i>
+                            <p>No notifications yet</p>
+                        </div>
+                    </div>
+
+                    <!-- ─── FRIENDS TAB ───────────────────────── -->
+                    <div id="tab-friends" class="tab-pane hidden">
+                        <div id="friend-requests-section" class="hidden">
+                            <p class="section-label" id="lbl-friend-requests">Friend Requests</p>
+                            <div id="friend-requests-list"></div>
+                        </div>
+                        <p class="section-label" id="lbl-people-you-may-know">People You May Know</p>
+                        <div id="discover-list"></div>
+                        <p class="section-label" id="friends-section-label">Friends (<span id="friends-count">0</span>)</p>
+                        <div id="friends-list"></div>
+                        <div class="empty-state hidden" id="friends-empty">
+                            <i class="fas fa-user-friends"></i>
+                            <p>No friends yet</p>
+                        </div>
+                    </div>
+
+                    <!-- ─── PROFILE TAB ───────────────────────── -->
+                    <div id="tab-profile" class="tab-pane hidden">
+                        <div id="profile-view"></div>
+                    </div>
+
+                    <!-- ─── MESSAGES TAB ──────────────────────── -->
+                    <div id="tab-messages" class="tab-pane hidden">
+                        <div id="chat-list"></div>
+                        <div class="empty-state hidden" id="chats-empty">
+                            <i class="fab fa-facebook-messenger"></i>
+                            <p>Add friends to start messaging</p>
+                        </div>
+                    </div>
+
+                    <!-- ─── CONVERSATION TAB ──────────────────── -->
+                    <div id="tab-convo" class="tab-pane hidden">
+                        <div id="convo-messages"></div>
+                        <div class="msg-input-bar">
+                            <button class="fb-icon-btn msg-media-btn" id="btn-msg-photo">
+                                <i class="fas fa-image"></i>
+                            </button>
+                            <input type="text" class="msg-text-input" id="msg-text-input" placeholder="Aa">
+                            <button class="msg-send-btn" id="btn-msg-send">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </main>
+
+                <!-- ═══════════════════════════════════════════════
+         BOTTOM NAV
+    ═══════════════════════════════════════════════ -->
+                <nav id="fb-nav" class="fb-nav">
+                    <button class="nav-item active" data-tab="home">
+                        <i class="fas fa-home"></i>
+                        <span class="nav-label">Home</span>
+                    </button>
+                    <button class="nav-item" data-tab="feeds">
+                        <i class="fas fa-stream"></i>
+                        <span class="nav-label">Feeds</span>
+                    </button>
+                    <button class="nav-item" data-tab="friends">
+                        <div class="nav-icon-wrap">
+                            <i class="fas fa-user-friends"></i>
+                            <span class="nav-badge hidden" id="badge-friends"></span>
+                        </div>
+                        <span class="nav-label">Friends</span>
+                    </button>
+                    <button class="nav-item" data-tab="notifs">
+                        <div class="nav-icon-wrap">
+                            <i class="fas fa-bell"></i>
+                            <span class="nav-badge hidden" id="badge-notifs"></span>
+                        </div>
+                        <span class="nav-label">Notifs</span>
+                    </button>
+                    <button class="nav-item" data-tab="profile">
+                        <div class="nav-avatar-wrap" id="nav-avatar"></div>
+                        <span class="nav-label">Profile</span>
+                    </button>
+                </nav>
+            </div><!-- #view-app -->
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: Create Post
+══════════════════════════════════════════════════════ -->
+            <div id="modal-create-post" class="modal hidden">
+                <div class="modal-backdrop" data-close-modal="create-post"></div>
+                <div class="modal-sheet">
+                    <div class="modal-topbar">
+                        <button class="modal-back-btn" data-close-modal="create-post"><i class="fas fa-times"></i></button>
+                        <span class="modal-topbar-title">Create Post</span>
+                        <button class="fb-btn fb-btn-primary modal-post-btn" id="btn-publish-post">Post</button>
+                    </div>
+                    <div class="modal-author-row">
+                        <div class="post-avatar" id="cp-avatar"></div>
+                        <div class="modal-author-info">
+                            <span class="modal-author-name" id="cp-name"></span>
+                            <button class="privacy-pill" id="btn-cp-privacy"><i class="fas fa-globe-americas"></i> Everyone <i class="fas fa-caret-down"></i></button>
+                        </div>
+                    </div>
+                    <textarea id="cp-text" class="cp-textarea" placeholder="What's on your mind?"></textarea>
+                    <div id="cp-img-preview" class="cp-img-preview hidden">
+                        <img id="cp-img" src="" alt="preview">
+                        <button class="cp-remove-img" id="btn-cp-remove-img"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div id="cp-feeling-tag" class="cp-feeling-tag hidden"></div>
+                    <div class="cp-add-to-post">
+                        <span class="cp-add-label">Add to your post</span>
+                        <div class="cp-add-btns">
+                            <button class="cp-add-btn" id="btn-cp-photo" title="Photo/Video">
+                                <i class="fas fa-image" style="color:#45bd62"></i>
+                            </button>
+                            <button class="cp-add-btn" id="btn-cp-feeling" title="Feeling/Activity">
+                                <i class="fas fa-smile" style="color:#f7b928"></i>
+                            </button>
+                            <button class="cp-add-btn" id="btn-cp-gif" title="GIF">
+                                <i class="fas fa-film" style="color:#e4116a"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: Story Viewer
+══════════════════════════════════════════════════════ -->
+            <div id="modal-story" class="modal hidden">
+                <div class="story-viewer">
+                    <div class="story-prog-bar" id="story-prog-bar">
+                        <div class="story-prog-fill" id="story-prog-fill"></div>
+                    </div>
+                    <div class="story-viewer-top">
+                        <div class="story-viewer-author">
+                            <div class="story-v-avatar" id="story-v-avatar"></div>
+                            <div>
+                                <span class="story-v-name" id="story-v-name"></span>
+                                <span class="story-v-time" id="story-v-time"></span>
+                            </div>
+                        </div>
+                        <button class="story-close-btn" id="btn-close-story"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="story-viewer-body" id="story-viewer-body"></div>
+                    <div class="story-viewer-text" id="story-viewer-text"></div>
+                    <div class="story-tap-zone" id="story-tap-prev"></div>
+                    <div class="story-tap-zone" id="story-tap-next"></div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: Comments
+══════════════════════════════════════════════════════ -->
+            <div id="modal-comments" class="modal hidden">
+                <div class="modal-backdrop" data-close-modal="comments"></div>
+                <div class="modal-sheet modal-sheet-tall">
+                    <div class="modal-topbar">
+                        <span class="modal-topbar-title">Comments</span>
+                        <button class="modal-back-btn" data-close-modal="comments"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="comments-scroll" id="comments-scroll"></div>
+                    <div class="comment-input-wrap">
+                        <div class="comment-input-avatar" id="comment-avatar"></div>
+                        <input type="text" class="comment-text-field" id="comment-text-field" placeholder="Write a comment...">
+                        <button class="comment-send-btn" id="btn-post-comment"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: Reactions Picker
+══════════════════════════════════════════════════════ -->
+            <div id="reactions-picker" class="reactions-picker hidden">
+                <div class="reaction-opt" data-reaction="like" title="Like"><span>👍</span></div>
+                <div class="reaction-opt" data-reaction="love" title="Love"><span>❤️</span></div>
+                <div class="reaction-opt" data-reaction="haha" title="Haha"><span>😆</span></div>
+                <div class="reaction-opt" data-reaction="wow" title="Wow"><span>😮</span></div>
+                <div class="reaction-opt" data-reaction="sad" title="Sad"><span>😢</span></div>
+                <div class="reaction-opt" data-reaction="angry" title="Angry"><span>😠</span></div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: Post Options
+══════════════════════════════════════════════════════ -->
+            <div id="modal-post-options" class="modal hidden">
+                <div class="modal-backdrop" data-close-modal="post-options"></div>
+                <div class="options-sheet">
+                    <button class="options-item" id="opt-save-post">
+                        <i class="fas fa-bookmark"></i> Save Post
+                    </button>
+                    <button class="options-item" id="opt-fav-post">
+                        <i class="fas fa-star"></i> <span id="opt-fav-label">Add to Favorites</span>
+                    </button>
+                    <button class="options-item text-danger hidden" id="opt-delete-post">
+                        <i class="fas fa-trash"></i> Delete Post
+                    </button>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: Story Options
+══════════════════════════════════════════════════════ -->
+            <div id="modal-story-options" class="modal hidden">
+                <div class="modal-backdrop" data-close-modal="story-options"></div>
+                <div class="modal-sheet">
+                    <div class="modal-topbar">
+                        <button class="modal-back-btn" data-close-modal="story-options"><i class="fas fa-times"></i></button>
+                        <span class="modal-topbar-title">Story</span>
+                    </div>
+                    <div class="profile-options-list" id="story-options-list">
+                        <button id="opt-delete-story" class="profile-option-item text-danger">
+                            <i class="fas fa-trash profile-option-icon"></i>
+                            <span>Delete Story</span>
+                        </button>
+                    </div>
+                    <div class="profile-delete-confirm hidden" id="story-delete-confirm">
+                        <p class="confirm-message">Delete this story?</p>
+                        <div class="confirm-actions">
+                            <button id="btn-confirm-delete-story-cancel" class="fb-btn fb-btn-ghost fb-btn-full">Cancel</button>
+                            <button id="btn-confirm-delete-story-ok" class="fb-btn fb-btn-danger fb-btn-full">Yes, Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: Feelings Picker
+══════════════════════════════════════════════════════ -->
+            <div id="modal-feelings" class="modal hidden">
+                <div class="modal-backdrop" data-close-modal="feelings"></div>
+                <div class="options-sheet feelings-sheet">
+                    <p class="feelings-title">How are you feeling?</p>
+                    <div class="feelings-grid" id="feelings-grid"></div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: Edit Profile
+══════════════════════════════════════════════════════ -->
+            <div id="modal-edit-profile" class="modal hidden">
+                <div class="modal-backdrop" data-close-modal="edit-profile"></div>
+                <div class="modal-sheet">
+                    <div class="modal-topbar">
+                        <button class="modal-back-btn" data-close-modal="edit-profile"><i class="fas fa-arrow-left"></i></button>
+                        <span class="modal-topbar-title">Edit Profile</span>
+                        <button class="fb-btn fb-btn-primary modal-post-btn" id="btn-save-profile">Save</button>
+                    </div>
+                    <div class="ep-form">
+                        <div class="ep-cover-section">
+                            <div class="ep-cover-preview" id="ep-cover-preview"></div>
+                            <button class="fb-btn fb-btn-outline ep-change-btn" id="btn-ep-cover">
+                                <i class="fas fa-camera"></i> Edit Cover Photo
+                            </button>
+                        </div>
+                        <div class="ep-avatar-section">
+                            <div class="ep-avatar-preview" id="ep-avatar-preview"></div>
+                            <button class="fb-btn fb-btn-outline ep-change-btn" id="btn-ep-avatar">
+                                <i class="fas fa-camera"></i> Edit Profile Photo
+                            </button>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="fb-input" id="ep-name" maxlength="50">
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="fb-input" id="ep-username" maxlength="30">
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label">Bio</label>
+                            <textarea class="fb-input fb-textarea" id="ep-bio" maxlength="150" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: Add Friend by username
+══════════════════════════════════════════════════════ -->
+            <div id="modal-add-friend" class="modal hidden">
+                <div class="modal-backdrop" data-close-modal="add-friend"></div>
+                <div class="options-sheet">
+                    <p class="feelings-title">Add Friend by Username</p>
+                    <input type="text" class="fb-input" id="add-friend-input" placeholder="Enter username..." autocomplete="off">
+                    <button class="fb-btn fb-btn-primary fb-btn-full" id="btn-do-add-friend" style="margin-top:10px">Search & Add</button>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: New Message
+══════════════════════════════════════════════════════ -->
+            <div id="modal-new-message" class="modal hidden">
+                <div class="modal-backdrop" data-close-modal="new-message"></div>
+                <div class="modal-sheet">
+                    <div class="modal-topbar">
+                        <button class="modal-back-btn" data-close-modal="new-message"><i class="fas fa-times"></i></button>
+                        <span class="modal-topbar-title">New Message</span>
+                    </div>
+                    <div id="new-msg-list"></div>
+                    <div class="empty-state hidden" id="new-msg-empty">
+                        <i class="fab fa-facebook-messenger"></i>
+                        <p>No friends to message yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     SEARCH OVERLAY
+══════════════════════════════════════════════════════ -->
+            <div id="search-overlay" class="search-overlay hidden">
+                <div class="search-overlay-header">
+                    <button class="fb-icon-btn" id="btn-search-back"><i class="fas fa-arrow-left"></i></button>
+                    <div class="search-input-wrap">
+                        <i class="fas fa-search search-input-icon"></i>
+                        <input type="text" id="search-input" class="search-text-input" placeholder="Search Framebook..." autocomplete="off">
+                        <button class="search-clear-btn hidden" id="btn-search-clear"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="search-results" id="search-results">
+                    <div class="search-placeholder">
+                        <i class="fas fa-search"></i>
+                        <p>Search for people or posts</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: Profile Options
+══════════════════════════════════════════════════════ -->
+            <div id="modal-profile-options" class="modal hidden">
+                <div class="modal-backdrop" data-close-modal="profile-options"></div>
+                <div class="modal-sheet">
+                    <div class="modal-topbar">
+                        <button class="modal-back-btn" data-close-modal="profile-options"><i class="fas fa-times"></i></button>
+                        <span class="modal-topbar-title">Options</span>
+                    </div>
+                    <div class="profile-options-list" id="profile-options-list">
+                        <button id="btn-logout" class="profile-option-item">
+                            <i class="fas fa-sign-out-alt profile-option-icon"></i>
+                            <span>Log Out</span>
+                        </button>
+                        <button id="btn-delete-account" class="profile-option-item text-danger">
+                            <i class="fas fa-user-times profile-option-icon"></i>
+                            <span>Delete Account</span>
+                        </button>
+                    </div>
+                    <div class="profile-delete-confirm hidden" id="profile-delete-confirm">
+                        <p class="confirm-message">Permanently delete your account? This cannot be undone.</p>
+                        <div class="confirm-actions">
+                            <button id="btn-confirm-delete-cancel" class="fb-btn fb-btn-ghost fb-btn-full">Cancel</button>
+                            <button id="btn-confirm-delete-ok" class="fb-btn fb-btn-danger fb-btn-full">Yes, Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════
+     MODAL: Recover Account
+══════════════════════════════════════════════════════ -->
+            <div id="modal-recover" class="modal hidden">
+                <div class="modal-backdrop" data-close-modal="recover"></div>
+                <div class="modal-sheet">
+                    <div class="modal-topbar">
+                        <button class="modal-back-btn" data-close-modal="recover"><i class="fas fa-times"></i></button>
+                        <span class="modal-topbar-title">Your Accounts</span>
+                    </div>
+                    <div id="recover-accounts-list"></div>
+                    <div class="empty-state hidden" id="recover-empty">
+                        <i class="fas fa-user-slash"></i>
+                        <p>No accounts found for this character</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- #application -->
+
+        <script src="main.js"></script>
+        <script src="framebook.js"></script>
+    </section>
+</body>
+
+</html>

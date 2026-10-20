@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360">
+  <title>CoilCab</title>
+  <rect x="2" y="2" width="356" height="356" rx="76" fill="#030303" stroke="#303030" stroke-width="2" />
+  <g fill="none" stroke="#f5f5f5" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(48 58) scale(1.35) skewX(-13)">
+      <path d="M64 27 26 32 16 74 59 61M75 31 110 26 113 63 70 71 75 31 112 47M132 24l-8 48m-2-42 22-5M163 15l-15 58 44-11M23 82l151-8" />
+    </g>
+    <g transform="translate(-158 152) scale(1.4) skewX(-13)">
+      <path d="m244 27-40 7-13 38 43-10m3 14 32-54 22 47m-45-9 45-14m16-22-9 48 37-18-29-9 29-17-28-4m-55 59 75-15" />
+    </g>
+  </g>
+</svg>

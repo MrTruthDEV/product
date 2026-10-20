@@ -1,0 +1,1 @@
+const s=e=>{const r=[e.firstName,e.lastName].filter(Boolean).join(" ").trim();return r||e.email.split("@")[0]||"iFruit User"},o=e=>{const a=(e.email.split("@")[0]||"").toLowerCase().replace(/[^a-z0-9._-]/g,"");return a||[e.firstName,e.lastName].filter(Boolean).join("").toLowerCase().replace(/[^a-z0-9]/g,"")||"herduser"};export{o as a,s as h};

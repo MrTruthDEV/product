@@ -1,0 +1,79 @@
+/* ── Light theme (Facebook default) ─────────────────────────── */
+:root {
+    --fb-primary:        #1877F2;
+    --fb-primary-hover:  #166FE5;
+    --fb-primary-light:  #E7F3FF;
+    --fb-danger:         #f02849;
+    --fb-green:          #45bd62;
+    --fb-yellow:         #f7b928;
+    --fb-orange:         #e9710f;
+
+    --fb-bg:             #F0F2F5;
+    --fb-card:           #FFFFFF;
+    --fb-card-hover:     #F2F2F2;
+    --fb-header-bg:      #FFFFFF;
+    --fb-nav-bg:         #FFFFFF;
+
+    --fb-text:           #050505;
+    --fb-text-2:         #65676B;
+    --fb-text-3:         #8A8D91;
+
+    --fb-border:         #CED0D4;
+    --fb-divider:        #E4E6EB;
+
+    --fb-input-bg:       #F0F2F5;
+    --fb-input-focus:    #FFFFFF;
+
+    --fb-shadow:         0 1px 2px rgba(0,0,0,0.1);
+    --fb-shadow-card:    0 1px 2px rgba(0,0,0,0.15);
+
+    --fb-nav-icon:       #65676B;
+    --fb-nav-active:     #1877F2;
+    --fb-nav-active-bg:  #E7F3FF;
+
+    --fb-story-overlay:  linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7));
+    --fb-story-bg:       linear-gradient(135deg, #1877F2 0%, #8B2FC9 100%);
+
+    --fb-like-color:     #1877F2;
+    --fb-love-color:     #f02849;
+    --fb-haha-color:     #f7b928;
+    --fb-wow-color:      #f7b928;
+    --fb-sad-color:      #f7b928;
+    --fb-angry-color:    #e9710f;
+
+    --modal-bg:          rgba(0,0,0,0.5);
+    --modal-sheet-bg:    #FFFFFF;
+
+    --scrollbar-thumb:   rgba(0,0,0,0.2);
+}
+
+/* ── Dark theme ──────────────────────────────────────────────── */
+[data-theme="dark"] {
+    --fb-bg:             #18191A;
+    --fb-card:           #242526;
+    --fb-card-hover:     #3A3B3C;
+    --fb-header-bg:      #242526;
+    --fb-nav-bg:         #242526;
+
+    --fb-text:           #E4E6EB;
+    --fb-text-2:         #B0B3B8;
+    --fb-text-3:         #8A8D91;
+
+    --fb-border:         #3E4042;
+    --fb-divider:        #3A3B3C;
+
+    --fb-input-bg:       #3A3B3C;
+    --fb-input-focus:    #3A3B3C;
+
+    --fb-shadow:         0 1px 2px rgba(0,0,0,0.4);
+    --fb-shadow-card:    0 1px 2px rgba(0,0,0,0.5);
+
+    --fb-nav-icon:       #B0B3B8;
+    --fb-nav-active:     #2374E1;
+    --fb-nav-active-bg:  #263951;
+
+    --modal-bg:          rgba(0,0,0,0.7);
+    --modal-sheet-bg:    #242526;
+
+    --scrollbar-thumb:   rgba(255,255,255,0.15);
+}
