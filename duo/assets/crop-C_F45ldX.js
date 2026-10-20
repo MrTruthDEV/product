@@ -1,1 +1,0 @@
-const d={width:.42,height:1},e={width:.92,height:.52};function M(t,h,n,s=0){const a=n==="landscape"?e:d,o=Math.floor(t*a.width),i=Math.floor(h*a.height),f=Math.floor((t-o)/2),c=Math.max(0,Math.min(t-o,f-Math.round(s*t)));return{width:o,height:i,offsetX:c,offsetY:Math.floor((h-i)/2)}}export{e as L,d as P,M as c};
